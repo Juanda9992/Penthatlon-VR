@@ -1,0 +1,54 @@
+{
+    "name": "Game_Actions",
+    "maps": [
+        {
+            "name": "Movement",
+            "id": "62167767-208a-4e19-a91c-2082a042643e",
+            "actions": [
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "4ed9cbc7-389e-49f0-9e05-225ab00599c4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "487fff27-7967-418a-85f2-1677d63da3c0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "627f1ee9-2d9e-4a48-b13a-3005f284e772",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "67abb35b-1ec1-4f24-b7bd-b2566708c2bb",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
