@@ -8,7 +8,7 @@ public class Metronome_Manager : MonoBehaviour
     [SerializeField] private AudioClip[] _audiosToPlay;
     [SerializeField] private float timeToPressInSeconds;
 
-
+    [SerializeField] private float delay;
     private float timeBetweenBeats = 0.5f;
     private AudioSource _source;
     private void Start()
@@ -16,32 +16,30 @@ public class Metronome_Manager : MonoBehaviour
         _source = GetComponent<AudioSource>();
 
         StartCoroutine(nameof(PlayBPMSounds));
-        StartCoroutine(nameof(CalculateInputWindow));
-
     }
 
-    private IEnumerator CalculateInputWindow()
+private IEnumerator PlayBPMSounds()
+{
+
+    float remainingTimeBetweenBeats = timeBetweenBeats - 2 * timeToPressInSeconds;
+
+    yield return new WaitForSeconds(timeToPressInSeconds);
+
+    while(true)
     {
-        float delayFirstInput = timeBetweenBeats - timeToPressInSeconds;
-        while(true)
+        for(int i = 0; i < _audiosToPlay.Length; i++)
         {
             isOnMarginToMove = true;
-            yield return new WaitForSeconds(delayFirstInput);
-            isOnMarginToMove = false;
-            yield return new WaitForSeconds(timeToPressInSeconds);
-        }
-    }
 
-    private IEnumerator PlayBPMSounds()
-    {
-        while(true)
-        {
-            for(int i = 0; i< _audiosToPlay.Length; i++)
-            {
-                _source.PlayOneShot(_audiosToPlay[i]);
-                yield return new WaitForSeconds(timeBetweenBeats);
-            }
+            yield return new WaitForSeconds(timeToPressInSeconds);
+
+            _source.PlayOneShot(_audiosToPlay[i]);
+
+            yield return new WaitForSeconds(timeToPressInSeconds);
+            isOnMarginToMove = false;
+            yield return new WaitForSeconds(remainingTimeBetweenBeats);
         }
     }
+}
 
 }
